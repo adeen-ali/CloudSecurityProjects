@@ -1,71 +1,69 @@
 # Cloud Security Portfolio
 
-A growing collection of hands-on cloud security projects focused on secure architecture, identity and access management, automation, monitoring, compliance, and threat-aware cloud design.
+A growing collection of production-grade cloud security projects designed to demonstrate real-world cloud security skills. These projects go beyond tutorials to showcase the thinking, trade-offs, and decision-making that define professional cloud security work.
 
-This repository is being built as a practical cloud security portfolio. Each project is designed to solve a realistic security problem using cloud-native services, automation, and documented security decisions.
+This portfolio focuses on practical cloud security problems such as secure file sharing, cloud misconfiguration detection, container security, secrets hygiene, logging, monitoring, and incident-ready architecture.
 
----
-
-## About This Portfolio
-
-Cloud security is not only about knowing tools. It is about understanding risks, designing secure systems, applying least privilege, monitoring activity, and explaining trade-offs clearly.
-
-This portfolio documents my journey of building practical cloud security projects that demonstrate how security controls are applied in real cloud environments.
-
-The goal is to show:
-
-- Secure cloud architecture design
-- Identity and access management
-- Data protection and encryption
-- Monitoring and logging
-- Security automation
-- Incident detection and alerting
-- Infrastructure as Code
-- DevSecOps and CI/CD security
-- Threat modeling and risk-based thinking
+The goal is not only to show that the projects work, but to explain why each security decision was made.
 
 ---
 
-## Portfolio Roadmap
+## Why These Projects Matter
 
-| Status | Project | Domain | Key Skills |
-|---|---|---|---|
-| Planned | Secure File Vault | Data Security / IAM | S3 security, KMS encryption, Cognito, IAM roles, CloudTrail, pre-signed URLs |
-| Planned | Cloud Security Scout | Security Automation | Lambda, Python Boto3, EventBridge, DynamoDB, SNS, misconfiguration detection |
-| Planned | Container Security Falcon | Container Security | Docker, ECR scanning, ECS, IAM task roles, CodePipeline, CloudWatch |
-| Planned | Secret Sweep | DevSecOps / Secure Coding | Secret detection, pattern matching, CI/CD security, GitHub Actions |
-| Future | Centralized Logging Lab | Visibility / Detection | CloudTrail, CloudWatch, log storage, alerting |
-| Future | IAM Least Privilege Lab | Identity Security | IAM users, groups, roles, policies, MFA |
-| Future | Threat Modeling Case Study | Risk Analysis | STRIDE, attack paths, control mapping |
+The cloud security market has matured. Employers are no longer impressed by tool lists or certifications alone. They want evidence that you understand real systems, real risks, and real trade-offs.
+
+These projects are designed to mirror how cloud security is practiced in the real world:
+
+- They show that security decisions are based on risk, not guesswork
+- They demonstrate understanding of scale, access control, monitoring, and response
+- They prove that technical work can be explained clearly
+- They show the ability to build, document, test, and improve cloud security controls
+
+If even a few projects are completed at this depth, they will carry more weight than many shallow labs.
 
 ---
 
-## Projects
+## Projects Overview
 
-### 01. Secure File Vault
+| # | Project | Domain | Key Skills Demonstrated | Status |
+|---|---|---|---|---|
+| 1 | Secure File Vault | Data Security / IAM | S3 security, KMS encryption, Cognito, IAM roles, CloudTrail, pre-signed URLs | Planned |
+| 2 | Cloud Security Scout | Security Automation | Lambda, Python Boto3, EventBridge, DynamoDB, SNS, misconfiguration detection | Planned |
+| 3 | Container Security Falcon | Container Security | Docker, ECR scanning, ECS, IAM task roles, CodePipeline, CloudWatch | Planned |
+| 4 | Secret Sweep | DevSecOps / Secrets Hygiene | Secret detection, pattern matching, CI/CD security, GitHub Actions | Planned |
+| 5 | Centralized Logging Lab | Visibility & Detection | CloudTrail, CloudWatch, log storage, alarms, incident response basics | Future |
+| 6 | IAM Least Privilege Lab | Identity & Access Management | IAM roles, policies, MFA, least privilege, access review | Future |
+| 7 | Cloud Security Audit | Compliance & Audit | Prowler, risk prioritization, remediation planning, security reporting | Future |
+| 8 | Threat Modeling Case Study | Risk Analysis | STRIDE, attack paths, control mapping, security reasoning | Future |
+
+---
+
+## Project 1: Secure File Vault
 
 A secure file-sharing portal for sensitive financial or client information.
 
-**Security problem:**  
-Organizations often need to share sensitive files, but weak access control, poor visibility, and lack of encryption can lead to unauthorized access, data leakage, reputational damage, and compliance issues.
+### Security Problem
 
-**Goal:**  
+Organizations often need to share sensitive files with clients, employees, or external parties. Without strong access control, encryption, and logging, this can lead to unauthorized access, data exposure, reputational damage, fines, and loss of trust.
+
+### Goal
+
 Build a secure cloud-based file vault where only authorized users can upload, download, and manage files.
 
-**Planned services and controls:**
+### Planned Services and Controls
 
 - Amazon S3 for secure file storage
 - AWS KMS for encryption
 - IAM roles for viewers, editors, and administrators
 - Amazon Cognito for user authentication
-- MFA for stronger identity protection
+- Multi-factor authentication
 - Pre-signed URLs for secure downloads
 - CloudTrail for access logging
-- CloudWatch alerts for suspicious activity
+- CloudWatch alarms for suspicious activity
 - S3 lifecycle rules for retention and cost control
 - AWS Amplify for hosting the user interface
 
-**Security focus:**
+### Security Focus
 
 - Encryption at rest
 - Least privilege access
@@ -77,17 +75,19 @@ Build a secure cloud-based file vault where only authorized users can upload, do
 
 ---
 
-### 02. Cloud Security Scout
+## Project 2: Cloud Security Scout
 
 A serverless cloud security scanner that checks AWS resources for common security misconfigurations.
 
-**Security problem:**  
-Cloud environments can grow quickly, making it difficult to manually track insecure configurations across services.
+### Security Problem
 
-**Goal:**  
+Cloud environments can grow quickly, making it difficult to manually track insecure configurations across services. Public storage, exposed ports, missing encryption, and weak identity controls can create serious security risks.
+
+### Goal
+
 Create an automated scanner that regularly checks cloud resources against a security baseline and reports risky configurations.
 
-**Planned checks:**
+### Planned Checks
 
 - Public S3 buckets
 - Security groups exposing sensitive ports
@@ -96,7 +96,7 @@ Create an automated scanner that regularly checks cloud resources against a secu
 - Unencrypted EBS volumes
 - ECR repositories without scan-on-push
 
-**Planned services and controls:**
+### Planned Services and Controls
 
 - AWS Lambda for running security checks
 - Python and Boto3 for AWS API interaction
@@ -106,7 +106,7 @@ Create an automated scanner that regularly checks cloud resources against a secu
 - CloudWatch metrics and alarms
 - Terraform for infrastructure provisioning
 
-**Security focus:**
+### Security Focus
 
 - Misconfiguration detection
 - Automated monitoring
@@ -116,17 +116,19 @@ Create an automated scanner that regularly checks cloud resources against a secu
 
 ---
 
-### 03. Container Security Falcon
+## Project 3: Container Security Falcon
 
 A container security project focused on securing container images, deployment pipelines, runtime permissions, and monitoring.
 
-**Security problem:**  
-Containers are often built quickly, but insecure base images, excessive permissions, and weak monitoring can introduce serious risks.
+### Security Problem
 
-**Goal:**  
+Containers are often built and deployed quickly, but insecure base images, excessive permissions, weak scanning, and poor monitoring can introduce serious risks into production environments.
+
+### Goal
+
 Build a secure container deployment workflow from image creation to runtime monitoring.
 
-**Planned services and controls:**
+### Planned Services and Controls
 
 - Docker for container image creation
 - Minimal base image such as Alpine Linux
@@ -139,7 +141,7 @@ Build a secure container deployment workflow from image creation to runtime moni
 - CloudWatch logs, alarms, and dashboards
 - Terraform for infrastructure provisioning
 
-**Security focus:**
+### Security Focus
 
 - Image hardening
 - Vulnerability scanning
@@ -150,17 +152,19 @@ Build a secure container deployment workflow from image creation to runtime moni
 
 ---
 
-### 04. Secret Sweep
+## Project 4: Secret Sweep
 
 A script-based project to detect hard-coded secrets in codebases.
 
-**Security problem:**  
-Developers may accidentally commit API keys, access tokens, passwords, or credentials into source code.
+### Security Problem
 
-**Goal:**  
+Developers may accidentally commit API keys, access tokens, passwords, or credentials into source code. Once exposed, these secrets can be abused by attackers and may lead to unauthorized access.
+
+### Goal
+
 Build a simple secret scanning tool that detects exposed secrets before they are pushed into a repository.
 
-**Planned features:**
+### Planned Features
 
 - Pattern matching for common secret formats
 - Detection of API keys, tokens, passwords, and credentials
@@ -168,7 +172,7 @@ Build a simple secret scanning tool that detects exposed secrets before they are
 - GitHub Actions integration for CI/CD checks
 - Safe test files with fake secrets only
 
-**Security focus:**
+### Security Focus
 
 - Secure coding practices
 - DevSecOps basics
