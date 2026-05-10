@@ -36,7 +36,8 @@ The scope includes the following AWS security areas:
 
 The audit will follow this lifecycle:
 
-Prepare → Scan → Analyze → Report → Remediate → Ret
+```text
+Prepare → Scan → Analyze → Report → Remediate → Retest
 
 ## Environment
 
