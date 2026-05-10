@@ -35,7 +35,10 @@ The scope includes the following AWS security areas:
 - Encryption and versioning gaps where safe to test
 
 The audit will follow this lifecycle:
-Prepare → Scan → Analyze → Report → Remediate → Ret## Environment
+
+Prepare → Scan → Analyze → Report → Remediate → Ret
+
+## Environment
 
 The audit will be performed in a personal AWS account created and controlled by the project owner.
 
